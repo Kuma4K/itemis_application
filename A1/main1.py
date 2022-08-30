@@ -1,7 +1,6 @@
 import math
-from decimal import Decimal, ROUND_UP
 
-
+"""Get 1 line of input and Returns Count of Items, item name, item price, if imported and if taxes"""
 def getStringAttr(text):
     imported = False
     taxes = True
@@ -9,7 +8,6 @@ def getStringAttr(text):
     last = len(text_helper) - 1
     count = text_helper[0]
     price = text_helper[last]
-
     if text.find("imported") > 0:
         imported = True
     if text.find("book") > 0 or text.find("chocolate") > 0 or text.find("pills") > 0:
@@ -21,6 +19,7 @@ def getStringAttr(text):
     return count, item, price, imported, taxes
 
 
+"""Get price and boolean for Imported and taxes; Returns total item price and total item taxes """
 def calc_total(r):
     tax = 0
     importTax = 0
@@ -35,14 +34,12 @@ def calc_total(r):
         importTax = myRound(importTax)
     sumTaxes = float("{:.2f}".format(tax + importTax))
     total = float("{:.2f}".format(price + sumTaxes))
-    #print(str(price) + " " + str(tax) + " " + str(importTax) + " " + str(sumTaxes))
-    #print(str(total))
     return total, sumTaxes
 
 
+"""round on x.x5 or x.x0"""
 def myRound(x, base=0.05):
     return float("{:.2f}".format(float(base * math.ceil(x / base))))
-
 
 
 input1 = ["1 book at 12.49", "1 music CD at 14.99", "1 chocolate bar at 0.85"]
@@ -51,27 +48,15 @@ input3 = ["1 imported bottle of perfume at 27.99", "1 bottle of perfume at 18.99
           "1 box of imported chocolates at 11.25"]
 input = [input1, input2, input3]
 
+"""   Loop on all inputs and print Output"""
 for j in range(len(input)):
     priceSum = 0
     taxSum = 0
+    print("Output " + str(j+1) + ":")
     for i in range(len(input[j])):
         item_list = getStringAttr(input[j][i])
         tax_list = calc_total(item_list)
         priceSum += tax_list[0]
         taxSum += tax_list[1]
-        print(str(item_list[0]) + " " + item_list[1] + ": " + str(item_list[2]))
-    print("Sales Taxes: " + "{:.2f}".format(taxSum) + "\nTotal: " + "{:.2f}".format(priceSum))
-    print("")
-
-
-"""
-for i in range(len(input2)):
-    item_list = getStringAttr(input2[i])
-    tax_total = calc_total(item_list)
-
-print("")
-
-for i in range(len(input3)):
-    item_list = getStringAttr(input3[i])
-    calc_total(item_list)
-"""
+        print("> " + str(item_list[0]) + " " + item_list[1] + ": " + "{:.2f}".format(tax_list[0]))
+    print("> " + "Sales Taxes: " + "{:.2f}".format(taxSum) + "\n> Total: " + "{:.2f}".format(priceSum))
