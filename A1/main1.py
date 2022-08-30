@@ -1,16 +1,16 @@
-# This is a sample Python script.
+def getStringAttr(text):
+    text_helper = text.split()
+    last = len(text_helper) - 1
+    count = text_helper[0]
+    price = text_helper[last]
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    text_helper.remove("at")
+    text_helper.remove(count)
+    text_helper.remove(price)
+    item = ' '.join(text_helper)
+    print(count + " " + item + ": " + price)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
+input = ["1 book at 12.49", "1 music CD at 14.99", "1 chocolate bar at 0.85"]
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+[getStringAttr(input[i]) for i in range(len(input))]
