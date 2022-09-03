@@ -1,4 +1,3 @@
-
 import input_conv
 
 
@@ -14,7 +13,5 @@ def get_data1():
         print(time)
 
 
-
-
-    #get_data()
-    get_data1()
+get_data()
+get_data1()
