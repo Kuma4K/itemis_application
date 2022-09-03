@@ -1,16 +1,20 @@
-# This is a sample Python script.
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import input_conv
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
+def get_data():
+    data1 = input_conv.prepare_input()
+    print(data1)
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def get_data1():
+    topic, time = input_conv.manipulated_input()
+    if len(topic) == len(time):
+        print(topic)
+        print(time)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+
+
+    #get_data()
+    get_data1()
