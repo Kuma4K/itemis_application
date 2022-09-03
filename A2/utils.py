@@ -10,9 +10,11 @@ def prepare_input():
     for x in content_list:
         e = x.split()
         e_len = len(e)
+
         time = e.pop(e_len-1)
         time = time.rsplit("min")
         time = time[0]
+        e.pop(0)
         if time == "lightning":
             time = 5
         else:
@@ -38,6 +40,11 @@ def conv_lightning_to_min(lightnings):
     minutes = int(lightnings * 5)
     return minutes
 
+def get_timestamp(ts):
+    return 0
 
 
-
+def ts_to_str(timestamp):
+    if timestamp == 0:
+        return "09:00AM"
+    return "None"

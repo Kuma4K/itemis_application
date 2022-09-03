@@ -1,22 +1,23 @@
 # Solve a multiple knapsack problem using a MIP solver.
 from ortools.linear_solver import pywraplp
-import input_conv
+import utils
 
 
 def get_data():
-    data1 = input_conv.prepare_input()
-    print(data1)
+    data1 = utils.prepare_input()
+    for x in data1:
+        print(x)
 
 
 def get_data1():
-    topic, time = input_conv.manipulated_input()
+    topic, time = utils.manipulated_input()
     if len(topic) == len(time):
         print(topic)
         print(time)
 
 
 def main():
-    topic, time = input_conv.manipulated_input()
+    topic, time = utils.manipulated_input()
     data = {}
     data['time'] = time
     data['topic'] = topic
@@ -65,29 +66,31 @@ def main():
     if status == pywraplp.Solver.OPTIMAL:
         total_time = 0
         for b in data['all_bins']:
+            timestamp_in_min = 0
             if b == 0:
-                print(f'Track 1 - morning')
+                print(f'> Track 1:')
             elif b == 1:
-                print(f'Track 1 - afternoon ')
+                print(f'> 12:00PM Lunch')
             elif b == 2:
-                print(f'Track 2 - morning')
+                print(f'> Track 1:')
             elif b == 3:
-                print(f'Track 2 - afternoon')
+                print(f'> 12:00PM Lunch')
             bin_time = 0
             for i in data['all_items']:
                 if x[i, b].solution_value() > 0:
                     print(
-                        f"Talk {i+1} time: {input_conv.conv_lightning_to_min(data['time'][i])} Topic: {data['topic'][i]}"
+                        f"> {utils.ts_to_str(timestamp_in_min)} {data['topic'][i]}"
                     )
+                    timestamp_in_min += utils.get_timestamp(timestamp_in_min)
                     bin_time += data['time'][i]
-            print(f'Track time: {input_conv.conv_lightning_to_min(bin_time)}\n')
+            #print(f'Track time: {utils.conv_lightning_to_min(bin_time)}min\n')
             total_time += bin_time
-        print(f'Total time of this Track: {input_conv.conv_lightning_to_min(total_time)}')
+        print(f'Total time of this Track: {utils.conv_lightning_to_min(total_time)}min')
     else:
         print('The problem does not have an optimal solution.')
 
 
 if __name__ == '__main__':
     main()
-    # get_data()
+    #get_data()
     # get_data1()
