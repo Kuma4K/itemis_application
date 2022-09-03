@@ -1,3 +1,6 @@
+import datetime
+
+# Read input from File input2.txt and reformat it to list for further use
 def prepare_input():
     f = open('input2.txt')
     content = f.read()
@@ -11,7 +14,7 @@ def prepare_input():
         e = x.split()
         e_len = len(e)
 
-        time = e.pop(e_len-1)
+        time = e.pop(e_len - 1)
         time = time.rsplit("min")
         time = time[0]
         e.pop(0)
@@ -26,25 +29,27 @@ def prepare_input():
 
     return result_list
 
-
+# Create two list form one result_list of prepare_input function
 def manipulated_input():
     input = prepare_input()
     topic = []
     time = []
     for x in input:
         topic.append(x[0])
-        time.append(x[2])
+        time.append(x[1])
     return topic, time
 
-def conv_lightning_to_min(lightnings):
-    minutes = int(lightnings * 5)
-    return minutes
+# add time of this topic to global timestamp in minutes
+def get_timestamp(ts, tl):
+    tl = tl
+    ts = ts + tl
+    return ts
 
-def get_timestamp(ts):
-    return 0
-
-
+# Format daytime in minutes to HH:MM AM/PM format
 def ts_to_str(timestamp):
     if timestamp == 0:
-        return "09:00AM"
-    return "None"
+        timestamp = 540
+    h = int(timestamp / 60)
+    m = timestamp % 60
+    t = datetime.time(h, m)
+    return t.strftime("%I:%M%p")
