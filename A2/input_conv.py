@@ -31,8 +31,12 @@ def manipulated_input():
     time = []
     for x in input:
         topic.append(x[0])
-        time.append(x[1])
+        time.append(x[2])
     return topic, time
+
+def conv_lightning_to_min(lightnings):
+    minutes = int(lightnings * 5)
+    return minutes
 
 
 
