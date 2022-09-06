@@ -17,32 +17,30 @@ def read_input_from_file():
     return input
 
 
-# Get 1 line of input and Returns Count of Items, item name, item price, if imported and if taxes
+# Get 1 line of input and Returns number of Items, item name, item price, if imported and if taxes
 def getStringAttr(text):
     imported = False
     taxes = True
     text_helper = text.split()
     last = len(text_helper) - 1
-    count = text_helper[0]
     price = text_helper[last]
     if text.find("imported") > 0:
         imported = True
     if text.find("book") > 0 or text.find("chocolate") > 0 or text.find("pills") > 0:
         taxes = False
     text_helper.remove("at")
-    text_helper.remove(count)
     text_helper.remove(price)
     item = ' '.join(text_helper)
-    return count, item, price, imported, taxes
+    return item, price, imported, taxes
 
 
 # Get price and boolean for Imported and taxes; Returns total item price and total item taxes
 def calc_total(r):
     tax = 0
     importTax = 0
-    price = float(r[2])
-    imported = r[3]
-    taxes = r[4]
+    price = float(r[1])
+    imported = r[2]
+    taxes = r[3]
     if taxes:
         tax = price * 0.1
         tax = myRound(tax)

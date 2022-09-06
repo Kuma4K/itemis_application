@@ -2,7 +2,7 @@ import utils1
 
 def main():
     input = utils1.read_input_from_file()
-    """   Loop on all inputs and print Output"""
+    #Loop on all inputs and print Output
     for j in range(len(input)):
         priceSum = 0
         taxSum = 0
@@ -12,7 +12,7 @@ def main():
             tax_list = utils1.calc_total(item_list)
             priceSum += tax_list[0]
             taxSum += tax_list[1]
-            print(str(item_list[0]) + " " + item_list[1] + ": " + "{:.2f}".format(tax_list[0]))
+            print(str(item_list[0]) + ": " + "{:.2f}".format(tax_list[0]))
         print("> " + "Sales Taxes: " + "{:.2f}".format(taxSum) + "\n> Total: " + "{:.2f}".format(priceSum))
 
 
