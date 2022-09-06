@@ -1,0 +1,17 @@
+Beschreibung und Herangehensweise:
+
+Ich habe anfangs übersehen nur eine Aufgabe zu bearbeiten, daher ignorieren Sie bitte Aufgabenteil Aufgabe 2.
+Als Abgabe möchte ich Aufgabe 1 einreichen.
+Da nicht weiter beschrieben war wie der INPUT an das Programm übergeben werden soll habe ich die Daten das List
+lement in erstellt und damit gestartet.
+Zum Beginn habe ich die Funktion getStringAttr(text) erstellt und den Input Sting in die einzelne Relevanten Elemente
+unterteilt und zurückgibt.
+Das Ergebnis wird in die calc_total(r) welches die Steuer und die Endsumme berechnet und zurückgibt.
+Für das Runden der Steuerbeträge habe ich die Funktion myRound(x, base=0.05) erstellt, die entsprechend der Aufgabe auf
+die nächste 0.05 aufrundet.
+Dazu habe ich JUnit.py Tests erstellt um diese Funktionen auf Richtigkeit zu testen.
+Für die Übersichtlichkeit habe die diese oben genannten Funktionen in die utils1.py ausgelagert.
+Diese habe ich dann in der main.py importiert.
+Zuletzt habe ich den Daten Import welchen ich für Aufgabe 2 erstellt hatte umgeschrieben um denselben Import auch hier
+nutzen zu können, sprich die INPUT Daten aus input1.txt in eine geschachtelte String List zu wandeln und für die weitere
+Verarbeitung zur Verfügung zu stellen.
